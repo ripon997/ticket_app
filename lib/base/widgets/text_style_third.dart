@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import '../res/styles/app_styles.dart';
 
 class TextStyleThird extends StatelessWidget {
-  const TextStyleThird({super.key,required this.text});
+  const TextStyleThird({super.key,required this.text,this.isColor});
   final String text;
+  final  bool? isColor;
   @override
   Widget build(BuildContext context) {
     return Text(
