@@ -15,18 +15,18 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-
-  final appScreens=[
+  final appScreens = [
     const HomeScreen(),
     const SearchScreen(),
     const TicketScreen(),
     const ProfileScreen(),
   ];
-//change index for bottomnavbar
+  //change index for bottomnavbar
   int _selectedIndex = 0;
-  void _onItemapped(int index){
+
+  void _onItemapped(int index) {
     setState(() {
-      _selectedIndex=index;
+      _selectedIndex = index;
     });
   }
 
