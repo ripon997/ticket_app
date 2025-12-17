@@ -12,7 +12,7 @@ class TextStyleThird extends StatelessWidget {
     return Text(
       text,
       //"NYC",
-      style: AppStyles.headLineStyle3.copyWith(color: Colors.white),
+      style: isColor==null?AppStyles.headLineStyle3.copyWith(color: Colors.white):AppStyles.headLineStyle3,
     );
   }
 }

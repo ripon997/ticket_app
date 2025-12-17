@@ -9,6 +9,8 @@ import 'package:ticket_app/base/utils/app_routes.dart';
 import 'package:ticket_app/base/widgets/app_double_text.dart';
 import 'package:ticket_app/base/widgets/ticket_view.dart';
 import 'package:ticket_app/screens/home/widgets/hotel.dart';
+
+import '../../base/widgets/heading_text.dart';
 //import 'package:ticket_app/screens/widgets/hotel.dart';
 //import 'package:ticket_app/base/utils/all_json.dart';
 class HomeScreen extends StatelessWidget {
@@ -36,7 +38,8 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text("Good Morning", style: AppStyles.headLineStyle3),
                         SizedBox(height: 5),
-                        Text("Book Tickets", style: AppStyles.headLineStyle1),
+                        const HeadingText(text: "Book Tickets", isColor: false),
+                        //Text("Book Tickets", style: AppStyles.headLineStyle1),
                       ],
                     ),
                     Container(
@@ -84,7 +87,14 @@ class HomeScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: ticketList
-                        .map((singleTicket) => TicketView(ticket:singleTicket))
+                        .map((singleTicket) => GestureDetector(
+                      onTap: (){
+                        var index = ticketList.indexOf(singleTicket);
+                        Navigator.pushNamed(context, AppRoutes.ticketScreen,arguments: {
+                          "index":index
+                        });
+                      },
+                        child: TicketView(ticket:singleTicket)))
                         .toList(),
                   ),
                 ),
@@ -94,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                   bigText: 'Hotels',
                   smallText: 'View all',
                    func: (){
-
+                     Navigator.pushNamed(context, AppRoutes.allHotels);
                    },
                   //func: () {},
                 ),
@@ -103,7 +113,14 @@ class HomeScreen extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                       child: Row(
                         children: hotelList
-                            .map((singleHotel) => Hotel(hotel : singleHotel))
+                            .map((singleHotel) => GestureDetector(
+                          onTap: (){
+                            var index = hotelList.indexOf(singleHotel);
+                            Navigator.pushNamed(context, AppRoutes.hotelDetail,arguments: {
+                              "index":index
+                            });
+                          },
+                            child: Hotel(hotel : singleHotel)))
                             .toList(),
                       )
                   ),
